@@ -1,0 +1,6 @@
+[
+	{
+		"keys": ["ctrl+shift+x"],
+		"command": "ecsstractor"
+	}
+]

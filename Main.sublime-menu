@@ -1,0 +1,13 @@
+[
+	{
+		"id": "tools",
+		"children":
+		[
+			{
+				"id": "ecsstractor",
+				"caption": "Run eCSStractor",
+				"command": "ecsstractor"
+			}
+		]
+	}
+]
