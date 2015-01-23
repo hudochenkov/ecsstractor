@@ -1,0 +1,21 @@
+{
+	// BEM Nesting. Generate nested stylesheet for preprocessors
+	"bem_nesting": false,
+
+	// This settings only uses if BEM Nesting is on
+
+	// Indentation
+	// "\t"   : one tab
+	// "  "   : two spaces
+	// "    " : four spaces
+	"indentation": "\t",
+
+	// Separator between block and element names
+	"bem.element_separator": "__",
+
+	// Separator between block or element and they modifier
+	"bem.modifier_separator": "--",
+
+	// Parent symbol. Ex.: &__element {}
+	"preprocessor.parent_symbol": "&"
+}
