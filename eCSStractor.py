@@ -13,6 +13,8 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 		indentation = plugin_settings.get('indentation', '\t')
 		bem_nesting = plugin_settings.get('bem_nesting')
 
+		syntax = 'Packages/CSS/CSS.tmLanguage'
+
 		# if view have any selection then work with selection, else with whole view
 		selection = view.sel()[0]
 
@@ -29,8 +31,6 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 
 		self.source = view.substr(region)
 
-		# create new view
-		new_file = self.window.new_file()
 
 		if bem_nesting:
 			output = self.generateBEM()
@@ -39,16 +39,20 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 			scss_syntax = os.path.join(sublime.packages_path(), 'Syntax Highlighting for Sass', 'Syntaxes', 'SCSS.tmLanguage')
 
 			if os.path.exists(scss_syntax):
-				new_file.set_syntax_file('Packages/Syntax Highlighting for Sass/Syntaxes/SCSS.tmLanguage')
-			else:
-				new_file.set_syntax_file('Packages/CSS/CSS.tmLanguage')
+
+				syntax = 'Packages/Syntax Highlighting for Sass/Syntaxes/SCSS.tmLanguage'
 
 		else:
 			output = self.generateOutput()
 
-			new_file.set_syntax_file('Packages/CSS/CSS.tmLanguage')
-
-		new_file.run_command("ecsstractor_insert", {"text": output})
+		# if output not empty
+		if output:
+			# create new view
+			new_file = self.window.new_file()
+			new_file.set_syntax_file(syntax)
+			new_file.run_command("ecsstractor_insert", {"text": output})
+		else:
+			sublime.status_message("eCSStractor can't find any classes")
 
 	def generateOutput(self):
 
