@@ -9,5 +9,87 @@
 				"command": "ecsstractor"
 			}
 		]
+	},
+	{
+		"id": "preferences",
+		"children":
+		[
+			{
+				"id": "package-settings",
+				"children":
+				[
+					{
+						"caption": "eCSStractor",
+						"children":
+						[
+							{
+								"command": "open_file",
+								"args": {
+									"file": "${packages}/eCSStractor/eCSStractor.sublime-settings"
+								},
+								"caption": "Settings – Default"
+							},
+							{
+								"command": "open_file",
+								"args": {
+									"file": "${packages}/User/eCSStractor.sublime-settings"
+								},
+								"caption": "Settings – User"
+							},
+							{ "caption": "-" },
+							{
+							    "command": "open_file",
+							    "args": {
+							        "file": "${packages}/eCSStractor/Default (OSX).sublime-keymap",
+							        "platform": "OSX"
+							    },
+							    "caption": "Key Bindings – Default"
+							},
+							{
+							    "command": "open_file",
+							    "args": {
+							        "file": "${packages}/eCSStractor/Default (Linux).sublime-keymap",
+							        "platform": "Linux"
+							    },
+							    "caption": "Key Bindings – Default"
+							},
+							{
+							    "command": "open_file",
+							    "args": {
+							        "file": "${packages}/eCSStractor/Default (Windows).sublime-keymap",
+							        "platform": "Windows"
+							    },
+							    "caption": "Key Bindings – Default"
+							},
+							{
+								"command": "open_file",
+								"args": {
+									"file": "${packages}/User/Default (Windows).sublime-keymap",
+									"platform": "Windows"
+								},
+								"caption": "Key Bindings – User"
+							},
+							{
+								"command": "open_file",
+								"args": {
+									"file": "${packages}/User/Default (OSX).sublime-keymap",
+									"platform": "OSX"
+								},
+								"caption": "Key Bindings – User"
+							},
+							{
+								"command": "open_file",
+								"args": {
+									"file": "${packages}/User/Default (Linux).sublime-keymap",
+									"platform": "Linux"
+								},
+								"caption": "Key Bindings – User"
+							},
+							{ "caption": "-" }
+						]
+					}
+				]
+			}
+		]
 	}
 ]
