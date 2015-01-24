@@ -1,6 +1,6 @@
 # eCSStractor
 
-Sublime Text 3 plugin for extracting selectors from HTML and generate CSS stylesheet for following work. For now it's only extract classes.
+Sublime Text 3 plugin for extracting class names from HTML and generate CSS stylesheet for following work.
 
 ## Usage
 
@@ -14,22 +14,60 @@ Then you will see new tab with CSS selectors extracted from document.
 
 Plugin can process either selected text or whole file.
 
+## Options
+
+The default settings can be viewed by accessing the **Preferences → Package Settings → eCSStractor → Settings – Default** menu entry. To ensure settings are not lost when the package is upgraded, make sure all edits are saved to **Settings – User**.
+
+**bem_nesting**
+
+BEM Nesting. Generate nested stylesheet for preprocessors rather simple stylesheet. You can see difference in _Example_ section of this readme.
+
+_Default: **false**_
+
+### Options only for BEM Nesting is on
+
+**indentation**
+
+Indentation.
+
+_Default: **\t**_
+
+**bem.element_separator**
+
+Separator between block and element names.
+
+_Default: **\_\_**_
+
+**bem.modifier_separator**
+
+Separator between block or element and they modifier.
+
+_Default: **--**_
+
+**preprocessor.parent_symbol**
+
+Parent symbol. Ex.: `&__element {}`
+
+_Default: **&**_
+
 ## Example
 
 Source:
 
 ```html
-<ul class="nav">
+<ul class="nav nav--main">
     <li class="nav__item"><a href="" class="nav__link">Home</a></li>
     <li class="nav__item"><a href="" class="nav__link">Shop</a></li>
     <li class="nav__item"><a href="" class="nav__link nav__link--special">About</a></li>
 </ul>
 ```
 
-Run eCSStractor:
+Run eCSStractor (BEM Nesting is off):
 
 ```css
 .nav {
+}
+.nav--main {
 }
 .nav__item {
 }
@@ -39,9 +77,26 @@ Run eCSStractor:
 }
 ```
 
+Run eCSStractor (BEM Nesting is on):
+
+```scss
+.nav {
+    &--main {
+    }
+    &__item {
+    }
+    &__link {
+        &--special {
+        }
+    }
+}
+```
+
 # Installation
 
-Via Package Control.
+Most simple way it's install with [Package Control](https://packagecontrol.io/).
+
+Open the Command Palette `Cmd+Shift+P` (OS X) or `Ctrl+Shift+P` (Linux/Windows) and select “Package Control: Install Package”, then search for `eCSStractor`.
 
 # Similar tool
 
