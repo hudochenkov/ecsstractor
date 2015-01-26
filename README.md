@@ -2,6 +2,12 @@
 
 Sublime Text 3 plugin for extracting class names from HTML and generate CSS stylesheet for following work.
 
+Default extracting:
+![ecss_normal](https://cloud.githubusercontent.com/assets/654597/5896783/5ac44e42-a54c-11e4-8981-75456ac98f0b.gif)
+
+With BEM nesting:
+![ecss_bem](https://cloud.githubusercontent.com/assets/654597/5896785/60708c5c-a54c-11e4-963f-9e00ede168c3.gif)
+
 ## Usage
 
 Open any document contain HTML and do one of the following:
