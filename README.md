@@ -36,7 +36,7 @@ _Default: **\t**_
 
 Separator between block and element names.
 
-_Default: **\_\_**_
+_Default: ___
 
 **bem.modifier_separator**
 
