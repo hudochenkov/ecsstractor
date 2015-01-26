@@ -2,7 +2,13 @@ import sublime
 import sublime_plugin
 import re
 import os
-from html.parser import HTMLParser
+
+try:
+	# ST2, Python 2
+	from HTMLParser import HTMLParser
+except:
+	# ST3, Python 3
+	from html.parser import HTMLParser
 
 class EcsstractorCommand(sublime_plugin.WindowCommand):
 	def run(self):
