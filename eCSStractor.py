@@ -16,7 +16,6 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 		view = self.window.active_view()
 
 		plugin_settings = sublime.load_settings('eCSStractor.sublime-settings')
-		indentation = plugin_settings.get('indentation', '\t')
 		bem_nesting = plugin_settings.get('bem_nesting')
 
 		syntax = 'Packages/CSS/CSS.tmLanguage'
@@ -36,7 +35,6 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 			region = sublime.Region(0, view.size())
 
 		self.source = view.substr(region)
-
 
 		if bem_nesting:
 			output = self.generateBEM()
