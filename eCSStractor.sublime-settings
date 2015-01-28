@@ -1,4 +1,7 @@
 {
+	// Add brackets. Useful for Sass syntax and Stylus
+	"brackets": true,
+
 	// BEM Nesting. Generate nested stylesheet for preprocessors
 	"bem_nesting": false,
 

@@ -24,6 +24,12 @@ Plugin can process either selected text or whole file.
 
 The default settings can be viewed by accessing the **Preferences → Package Settings → eCSStractor → Settings – Default** menu entry. To ensure settings are not lost when the package is upgraded, make sure all edits are saved to **Settings – User**.
 
+**brackets**
+
+Add brackets. Useful for Sass syntax and Stylus.
+
+_Default: **true**_
+
 **bem_nesting**
 
 BEM Nesting. Generate nested stylesheet for preprocessors rather simple stylesheet. You can see difference in _Example_ section of this readme.

@@ -17,6 +17,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 
 		plugin_settings = sublime.load_settings('eCSStractor.sublime-settings')
 		bem_nesting = plugin_settings.get('bem_nesting')
+		self.brackets = plugin_settings.get('brackets')
 
 		syntax = 'Packages/CSS/CSS.tmLanguage'
 
@@ -179,7 +180,10 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 		# format output
 		for block in selectors:
 
-			output += "." + block["name"] + " {\n"
+			if self.brackets:
+				output += "." + block["name"] + " {\n"
+			else:
+				output += "." + block["name"] + "\n"
 
 			indent = indentation
 			indent1 = indent * 1
@@ -188,23 +192,44 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 			if "modifiers" in block:
 
 				for modifier in block["modifiers"]:
-					output += indent1 + parent_symbol + modifier_separator + modifier + " {\n"
-					output += indent1 + "}\n"
+					if self.brackets:
+						output += indent1 + parent_symbol + modifier_separator + modifier + " {\n"
+						output += indent1 + "}\n"
+					else:
+						output += indent1 + parent_symbol + modifier_separator + modifier + "\n"
+						output += "\n"
 
 			if "elements" in block:
 
 				for element in block["elements"]:
-					output += indent1 + parent_symbol + element_separator + element["name"] + " {\n"
+					if self.brackets:
+						output += indent1 + parent_symbol + element_separator + element["name"] + " {\n"
+					else:
+						output += indent1 + parent_symbol + element_separator + element["name"] + "\n"
 
 					if "modifiers" in element:
 
 						for modifier in element["modifiers"]:
-							output += indent2 + parent_symbol + modifier_separator + modifier + " {\n"
-							output += indent2 + "}\n"
+							if self.brackets:
+								output += indent2 + parent_symbol + modifier_separator + modifier + " {\n"
+								output += indent2 + "}\n"
+							else:
+								output += indent2 + parent_symbol + modifier_separator + modifier + "\n"
+								output += "\n"
 
-					output += indent1 + "}\n"
+					if self.brackets:
+						output += indent1 + "}\n"
+					else:
+						output += "\n"
 
-			output += "}\n"
+			if self.brackets:
+				output += "}\n"
+			else:
+				output += "\n"
+
+		if not self.brackets:
+			output = output.replace("\n\n\n\n", "\n\n")
+			output = output.replace("\n\n\n", "\n\n")
 
 		return output
 
