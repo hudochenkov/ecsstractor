@@ -253,6 +253,9 @@ class parser(HTMLParser):
 
 	def handle_starttag(self, tag, attrs):
 
+		ignore = sublime.load_settings('eCSStractor.sublime-settings').get('ignore', "")
+		ignore_regex = sublime.load_settings('eCSStractor.sublime-settings').get('ignore_regex', "")
+
 		for name, value in attrs:
 
 			if name == "class":
@@ -268,6 +271,21 @@ class parser(HTMLParser):
 
 					for i in range(len(elementClasses)):
 
-						# add class to list if it's already not there
-						if elementClasses[i] not in self.classes:
-							self.classes.append(elementClasses[i])
+						currentClass = elementClasses[i]
+
+						# possible add class to list if it's already not there and not in ignore list
+						if currentClass not in (self.classes and ignore):
+
+							# check if it's pass regex ignore list check
+							itspass = True
+
+							for y in range(len(ignore_regex)):
+
+								if re.compile(ignore_regex[y]).match(currentClass):
+									itspass = False
+									print(currentClass + " — " + ignore_regex[y])
+									break
+
+							# add class to list if it's not already in the list, and pass both ignore list checks
+							if itspass:
+								self.classes.append(currentClass)

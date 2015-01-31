@@ -2,6 +2,12 @@
 	// Add brackets. Useful for Sass syntax and Stylus
 	"brackets": true,
 
+	// Ignore classes
+	// "ignore": ["clearfix", "hide"],
+
+	// Ignore classes with RegEx patterns
+	// "ignore_regex": ["^js-"],
+
 	// BEM Nesting. Generate nested stylesheet for preprocessors
 	"bem_nesting": false,
 
