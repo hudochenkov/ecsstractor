@@ -34,13 +34,13 @@ _Default: **true**_
 
 **ignore**
 
-List of classnames to ignore. Useful for helper classes, that probably already described. Ex., `clearfix`. See **Settings - Default** for example.
+List of classnames to ignore. Useful for helper classes, that probably already described. Ex., `clearfix`. See **Settings – Default** for example.
 
 _Default: **empty**_
 
 **ignore_regex**
 
-Similar to `ignore` option, but use [RegEx](https://docs.python.org/3.4/library/re.html#regular-expression-syntax) to ignore. Ex., `^js-` will ingore all classes started with `js-`. See **Settings - Default** for example.
+Similar to `ignore` option, but use [RegEx](https://docs.python.org/3.4/library/re.html#regular-expression-syntax) to ignore. Ex., `^js-` will ingore all classes started with `js-`. See **Settings – Default** for example.
 
 _Default: **empty**_
 
