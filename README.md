@@ -13,12 +13,14 @@ With BEM nesting:
 Open any document contain HTML and do one of the following:
 
 * Press `Cmd+Shift+X` on Mac OS X or `Ctrl+Shift+X` on Windows/Linux.
-* Go to `Tools → Run eCSStractor`
-* Right click and select `Run eCSStractor`
+* Go to **Tools → eCSStractor → Run**
+* Right click and select **eCSStractor → Run**
 
 Then you will see new tab with CSS selectors extracted from document.
 
 Plugin can process either selected text or whole file.
+
+You can explicit **Run (with BEM Nesting)** or **Run (without BEM Nesting)** regardless `bem_nesting` option from Command Palette, Menu or Context Menu.
 
 ## Options
 

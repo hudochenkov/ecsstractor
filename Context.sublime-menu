@@ -1,6 +1,26 @@
 [
 	{
-		"caption": "Run eCSStractor",
-		"command": "ecsstractor"
+		"caption": "eCSStractor",
+		"children":
+		[
+			{
+				"caption": "Run",
+				"command": "ecsstractor"
+			},
+			{
+				"caption": "Run (with BEM Nesting)",
+				"command": "ecsstractor",
+				"args": {
+					"bem_nesting": true
+				}
+			},
+			{
+				"caption": "Run (without BEM Nesting)",
+				"command": "ecsstractor",
+				"args": {
+					"bem_nesting": false
+				}
+			}
+		]
 	}
 ]

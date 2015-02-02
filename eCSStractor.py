@@ -11,13 +11,15 @@ except:
 	from html.parser import HTMLParser
 
 class EcsstractorCommand(sublime_plugin.WindowCommand):
-	def run(self):
+	def run(self, bem_nesting = "default"):
 
 		view = self.window.active_view()
 
 		plugin_settings = sublime.load_settings('eCSStractor.sublime-settings')
-		bem_nesting = plugin_settings.get('bem_nesting')
 		self.brackets = plugin_settings.get('brackets')
+
+		if bem_nesting is "default":
+			bem_nesting = plugin_settings.get('bem_nesting')
 
 		syntax = 'Packages/CSS/CSS.tmLanguage'
 
