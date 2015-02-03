@@ -276,7 +276,7 @@ class parser(HTMLParser):
 						currentClass = elementClasses[i]
 
 						# possible add class to list if it's already not there and not in ignore list
-						if currentClass not in (self.classes and ignore):
+						if currentClass not in self.classes and currentClass not in ignore:
 
 							# check if it's pass regex ignore list check
 							itspass = True
@@ -285,7 +285,6 @@ class parser(HTMLParser):
 
 								if re.compile(ignore_regex[y]).match(currentClass):
 									itspass = False
-									print(currentClass + " — " + ignore_regex[y])
 									break
 
 							# add class to list if it's not already in the list, and pass both ignore list checks
