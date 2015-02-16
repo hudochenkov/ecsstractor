@@ -17,6 +17,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 
 		plugin_settings = sublime.load_settings('eCSStractor.sublime-settings')
 		self.brackets = plugin_settings.get('brackets')
+		destination = plugin_settings.get('destination')
 
 		if bem_nesting is "default":
 			bem_nesting = plugin_settings.get('bem_nesting')
@@ -54,10 +55,18 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 
 		# if output not empty
 		if output:
-			# create new view
-			new_file = self.window.new_file()
-			new_file.set_syntax_file(syntax)
-			new_file.run_command("ecsstractor_insert", {"text": output})
+
+			if destination == "tab":
+				# create new view
+				new_file = self.window.new_file()
+				new_file.set_syntax_file(syntax)
+				new_file.run_command("ecsstractor_insert", {"text": output})
+
+			elif destination == "clipboard":
+				# copy to clipboard
+				sublime.set_clipboard(output)
+				sublime.status_message("eCSStractor: result was copied to clipboard")
+
 		else:
 			sublime.status_message("eCSStractor can't find any classes")
 

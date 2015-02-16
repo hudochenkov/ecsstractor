@@ -1,0 +1,1 @@
+Added `destination` option to set result's destination: new tab or copy to clipboard.

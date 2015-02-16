@@ -46,6 +46,12 @@ Similar to `ignore` option, but use [RegEx](https://docs.python.org/3.4/library/
 
 _Default: **empty**_
 
+**destination**
+
+Where to put result: new tab (`tab`) or copy to clipboard (`clipboard`)
+
+_Default: **tab**_
+
 **bem_nesting**
 
 BEM Nesting. Generate nested stylesheet for preprocessors rather simple stylesheet. You can see difference in _Example_ section of this readme.

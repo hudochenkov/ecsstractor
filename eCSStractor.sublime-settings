@@ -8,6 +8,11 @@
 	// Ignore classes with RegEx patterns
 	// "ignore_regex": ["^js-"],
 
+	// Where to put result
+	// "tab": new tab
+	// "clipboard": copy to clipboard
+	"destination": "tab",
+
 	// BEM Nesting. Generate nested stylesheet for preprocessors
 	"bem_nesting": false,
 
