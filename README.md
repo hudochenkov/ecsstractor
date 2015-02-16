@@ -28,31 +28,31 @@ You can explicit **Run (with BEM Nesting)** or **Run (without BEM Nesting)** reg
 
 The default settings can be viewed by accessing the **Preferences → Package Settings → eCSStractor → Settings – Default** menu entry. To ensure settings are not lost when the package is upgraded, make sure all edits are saved to **Settings – User**.
 
-**brackets**
+#### brackets
 
 Add brackets. Useful for Sass syntax and Stylus.
 
 _Default: **true**_
 
-**ignore**
+#### ignore
 
 List of classnames to ignore. Useful for helper classes, that probably already described. Ex., `clearfix`. See **Settings – Default** for example.
 
 _Default: **empty**_
 
-**ignore_regex**
+#### ignore_regex
 
 Similar to `ignore` option, but use [RegEx](https://docs.python.org/3.4/library/re.html#regular-expression-syntax) to ignore. Ex., `^js-` will ingore all classes started with `js-`. See **Settings – Default** for example.
 
 _Default: **empty**_
 
-**destination**
+#### destination
 
 Where to put result: new tab (`tab`) or copy to clipboard (`clipboard`)
 
 _Default: **tab**_
 
-**bem_nesting**
+#### bem_nesting
 
 BEM Nesting. Generate nested stylesheet for preprocessors rather simple stylesheet. You can see difference in _Example_ section of this readme.
 
@@ -60,25 +60,25 @@ _Default: **false**_
 
 ### Options only for BEM Nesting is on
 
-**indentation**
+#### indentation
 
 Indentation.
 
 _Default: **\t**_
 
-**bem.element_separator**
+#### bem.element_separator
 
 Separator between block and element names.
 
 _Default: ___
 
-**bem.modifier_separator**
+#### bem.modifier_separator
 
 Separator between block or element and they modifier.
 
 _Default: **--**_
 
-**preprocessor.parent_symbol**
+#### preprocessor.parent_symbol
 
 Parent symbol. Ex.: `&__element {}`
 
