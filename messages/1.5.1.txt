@@ -1,0 +1,3 @@
+Version 1.5.1
+
+* Fix incorrect BEM naming splitting with key-value BEM natation (e. g., .block__element_modifier-key_modifier-value)

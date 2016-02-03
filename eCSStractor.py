@@ -110,7 +110,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 			# if block has element
 			if element_separator in selector:
 
-				parts = selector.split(element_separator)
+				parts = selector.split(element_separator, maxsplit=1)
 
 				# check if block with this name exist already
 				hasBlock = self.hasChild(selectors, "name", parts[0])
@@ -128,7 +128,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 					block["elements"] = []
 
 				# get element and his modifier
-				elementParts = parts[1].split(modifier_separator)
+				elementParts = parts[1].split(modifier_separator, maxsplit=1)
 
 				# check if element with this name exist in block already
 				hasElement = self.hasChild(block["elements"], "name", elementParts[0])
@@ -162,7 +162,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 			# if block has modifier
 			elif modifier_separator in selector:
 
-				parts = selector.split(modifier_separator)
+				parts = selector.split(modifier_separator, maxsplit=1)
 
 				hasBlock = self.hasChild(selectors, "name", parts[0])
 
