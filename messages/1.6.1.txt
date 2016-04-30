@@ -1,0 +1,3 @@
+Version 1.6.1
+
+* `attribute` option renamed to `attributes`. By default it's set to `["class", "className"]`.
