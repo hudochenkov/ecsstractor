@@ -1,0 +1,3 @@
+Version 1.6.0
+
+* Add new option `attribute`. By default it's set to `class`, but can be set to `className` for JSX.
