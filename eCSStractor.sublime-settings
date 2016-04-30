@@ -13,6 +13,11 @@
 	// "clipboard": copy to clipboard
 	"destination": "tab",
 
+	// Attribute name
+	"attribute": "class",
+	// For react jsx
+	// "attribute": "className",
+
 	// BEM Nesting. Generate nested stylesheet for preprocessors
 	"bem_nesting": false,
 

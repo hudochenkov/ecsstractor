@@ -34,6 +34,12 @@ Add brackets. Useful for Sass syntax and Stylus.
 
 _Default: **true**_
 
+#### attribute
+
+HTML node attribute from which class names should be extracted, for JSX syntax it can be set to `className`.
+
+_Default: **class**_
+
 #### ignore
 
 List of classnames to ignore. Useful for helper classes, that probably already described. Ex., `clearfix`. See **Settings – Default** for example.
