@@ -14,9 +14,12 @@
 	"destination": "tab",
 
 	// Attribute name
-	"attribute": "class",
-	// For react jsx
-	// "attribute": "className",
+	"attributes": [
+		"class",
+		// For react jsx
+		"className"
+	],
+
 
 	// BEM Nesting. Generate nested stylesheet for preprocessors
 	"bem_nesting": false,

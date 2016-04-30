@@ -34,11 +34,11 @@ Add brackets. Useful for Sass syntax and Stylus.
 
 _Default: **true**_
 
-#### attribute
+#### attributes
 
-HTML node attribute from which class names should be extracted, for JSX syntax it can be set to `className`.
+HTML node attributes from which class names should be extracted.
 
-_Default: **class**_
+_Default: **["class", "className"]**_
 
 #### ignore
 
