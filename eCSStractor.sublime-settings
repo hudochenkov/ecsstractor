@@ -2,6 +2,12 @@
 	// Add brackets. Useful for Sass syntax and Stylus
 	"brackets": true,
 
+	// Empty line before nested element/modifier
+	"empty_line_before_nested_selector": true,
+
+	// Add new line.
+	"brackets_newline_after": true,
+
 	// Ignore classes
 	// "ignore": ["clearfix", "hide"],
 

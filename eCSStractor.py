@@ -17,6 +17,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 
 		plugin_settings = sublime.load_settings('eCSStractor.sublime-settings')
 		self.brackets = plugin_settings.get('brackets')
+		self.brackets_newline_after = plugin_settings.get('brackets_newline_after')
 		destination = plugin_settings.get('destination')
 
 		if bem_nesting is "default":
@@ -92,6 +93,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 		element_separator = plugin_settings.get('bem.element_separator', '__')
 		modifier_separator = plugin_settings.get('bem.modifier_separator', '--')
 		parent_symbol = plugin_settings.get('preprocessor.parent_symbol', '&')
+		empty_line_before_nested_selector = plugin_settings.get('empty_line_before_nested_selector')
 
 		output = ""
 		selectors = []
@@ -200,36 +202,53 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 			indent1 = indent * 1
 			indent2 = indent * 2
 
+			if empty_line_before_nested_selector:
+				empty_line = "\n"
+			else:
+				empty_line = ""
+
 			if "modifiers" in block:
 
 				for modifier in block["modifiers"]:
 					if self.brackets:
-						output += indent1 + parent_symbol + modifier_separator + modifier + " {\n"
-						output += indent1 + "}\n"
+						if self.brackets_newline_after:
+							output += empty_line + indent1 + parent_symbol + modifier_separator + modifier + " {\n"
+							output += indent1 + "}\n"
+						else:
+							output += empty_line + indent1 + parent_symbol + modifier_separator + modifier + " {}\n"
 					else:
-						output += indent1 + parent_symbol + modifier_separator + modifier + "\n"
+						output += empty_line + indent1 + parent_symbol + modifier_separator + modifier + "\n"
 						output += "\n"
 
 			if "elements" in block:
 
 				for element in block["elements"]:
 					if self.brackets:
-						output += indent1 + parent_symbol + element_separator + element["name"] + " {\n"
+						if self.brackets_newline_after:
+							output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + " {\n"
+						else:
+							output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + " {"
 					else:
-						output += indent1 + parent_symbol + element_separator + element["name"] + "\n"
+						output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + "\n"
 
 					if "modifiers" in element:
 
 						for modifier in element["modifiers"]:
 							if self.brackets:
-								output += indent2 + parent_symbol + modifier_separator + modifier + " {\n"
-								output += indent2 + "}\n"
+								if self.brackets_newline_after:
+									output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + " {\n"
+									output += indent2 + "}\n"
+								else:
+									output += empty_line + "\n" +indent2 + parent_symbol + modifier_separator + modifier + " {}\n" + indent1
 							else:
-								output += indent2 + parent_symbol + modifier_separator + modifier + "\n"
+								output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + "\n"
 								output += "\n"
 
 					if self.brackets:
-						output += indent1 + "}\n"
+						if self.brackets_newline_after:
+							output += indent1 + "}\n"
+						else:
+							output += "}\n"
 					else:
 						output += "\n"
 
