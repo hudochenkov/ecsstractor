@@ -217,7 +217,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 						else:
 							output += empty_line + indent1 + parent_symbol + modifier_separator + modifier + " {}\n"
 					else:
-						output += empty_line + indent1 + parent_symbol + modifier_separator + modifier + "\n"
+						output += indent1 + parent_symbol + modifier_separator + modifier + "\n"
 						output += "\n"
 
 			if "elements" in block:
@@ -232,6 +232,8 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 						output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + "\n"
 
 					if "modifiers" in element:
+						if not self.brackets_newline_after:
+							output += "\n"
 
 						for modifier in element["modifiers"]:
 							if self.brackets:
@@ -239,7 +241,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 									output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + " {\n"
 									output += indent2 + "}\n"
 								else:
-									output += empty_line + "\n" +indent2 + parent_symbol + modifier_separator + modifier + " {}\n" + indent1
+									output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + " {}\n"
 							else:
 								output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + "\n"
 								output += "\n"
@@ -248,7 +250,10 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 						if self.brackets_newline_after:
 							output += indent1 + "}\n"
 						else:
-							output += "}\n"
+							if "modifiers" in element:
+								output += indent1 + "}\n"
+							else:
+								output += "}\n"
 					else:
 						output += "\n"
 

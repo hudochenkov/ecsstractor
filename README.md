@@ -34,12 +34,6 @@ Add brackets. Useful for Sass syntax and Stylus.
 
 _Default: **true**_
 
-#### empty_line_before_nested_selector
-
-Add empty line before nested bem element/modifier.
-
-_Default: **true**_
-
 #### brackets_newline_after
 
 Add new line after open bracket.
@@ -101,6 +95,12 @@ _Default: **--**_
 Parent symbol. Ex.: `&__element {}`
 
 _Default: **&**_
+
+#### empty_line_before_nested_selector
+
+Add empty line before nested element/modifier.
+
+_Default: **false**_
 
 ## Example
 
