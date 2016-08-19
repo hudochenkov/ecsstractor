@@ -1,0 +1,6 @@
+Version 1.7.0
+
+* Added new option `brackets_newline_after`. Add new line after open bracket.
+* Added new option `empty_line_before_nested_selector`. Add empty line before nested element/modifier.
+
+Thanks, Nikolay Gromov, for these options!
