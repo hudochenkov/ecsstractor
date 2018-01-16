@@ -1,0 +1,6 @@
+Version 1.8.0
+
+* Added new option `add_comments`. Works with BEM nesting enabled. Generate full class names as a comments before nested BEM elements and modifiers. This is useful for finding selectors by class names.
+* Added new option `comment_style` to control output when `add_comments` enabled.
+
+Thanks, Jaak Ritso!

@@ -107,7 +107,7 @@ _Default: **false**_
 
 #### add_comments
 
-Generate full class names as a comments before nested BEM elements and modifiers. This is useful for finding the selectors by class names. See the difference in the [Examples](#examples) section.
+Generate full class names as a comments before nested BEM elements and modifiers. This is useful for finding selectors by class names. See the difference in the [Examples](#examples) section.
 
 _Default: **false**_
 
