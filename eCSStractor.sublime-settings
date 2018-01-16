@@ -26,10 +26,7 @@
 	// BEM Nesting. Generate nested stylesheet for preprocessors
 	"bem_nesting": false,
 
-	// Add comments to nested stylesheets for preprocessors
-	"add_comments": false,
-
-	// This settings only uses if BEM Nesting is on
+	// These settings uses if BEM Nesting is on
 
 	// Indentation
 	// "\t"   : one tab
@@ -49,6 +46,9 @@
 	// Empty line before nested element/modifier
 	"empty_line_before_nested_selector": false,
 
-	// Comment style. Either CSS (/* */) or SCSS (// )
+	// Add comments to nested stylesheets for preprocessors
+	"add_comments": false,
+
+	// Comment style. Either CSS (/* */) or SCSS (//)
 	"comment_style": "CSS"
 }

@@ -11,7 +11,7 @@ With BEM nesting:
 ![ecss_bem](https://cloud.githubusercontent.com/assets/654597/5896785/60708c5c-a54c-11e4-963f-9e00ede168c3.gif)
 
 With BEM nesting and class names as comments:
-![ecss_bem_comments](https://raw.githubusercontent.com/jaakritso/ecsstractor/master/eCSStractor-comments.mov.gif)
+![ecss_bem_comments](https://user-images.githubusercontent.com/654597/35009441-d1de8982-faff-11e7-8281-7d4e85d4dc5a.gif)
 
 ## Usage
 
@@ -69,13 +69,7 @@ _Default: **tab**_
 
 #### bem_nesting
 
-BEM Nesting. Generate nested stylesheet for preprocessors rather simple stylesheet. You can see difference in _Example_ section of this readme.
-
-_Default: **false**_
-
-#### add_comments
-
-Generate full class names as a comments before nested BEM elements and modifiers. This is useful for finding the selectors by class names. You can see difference in _Example_ section of this readme.
+BEM Nesting. Generate nested stylesheet for preprocessors rather simple stylesheet. See the difference in the [Examples](#examples) section.
 
 _Default: **false**_
 
@@ -111,13 +105,19 @@ Add empty line before nested element/modifier.
 
 _Default: **false**_
 
-### comment_style
+#### add_comments
 
-Comment style shows CSS (/\* \*/) or SCSS(// ) style comments. Works only with add_comments choice.
+Generate full class names as a comments before nested BEM elements and modifiers. This is useful for finding the selectors by class names. See the difference in the [Examples](#examples) section.
 
-_Default: **CSS**_
+_Default: **false**_
 
-## Example
+#### comment_style
+
+Comment style shows `CSS` (`/* */`) or `SCSS` (`//`) style comments. Works with `add_comments` enabled.
+
+_Default: **"CSS"**_
+
+## Examples
 
 Source:
 

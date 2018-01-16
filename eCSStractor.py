@@ -26,7 +26,6 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 		if add_comments is "default":
 			add_comments = plugin_settings.get('add_comments')
 
-
 		syntax = 'Packages/CSS/CSS.tmLanguage'
 
 		# if view have any selection then work with selection, else with whole view
@@ -100,13 +99,13 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 		empty_line_before_nested_selector = plugin_settings.get('empty_line_before_nested_selector')
 
 		# Comment style
-		comment_style = "css"
 		comment_style = plugin_settings.get('comment_style', 'css').lower()
-		comment_symbol_beginning = "// "
-		comment_symbol_end = ""
-		if comment_style == "css":
-			comment_symbol_beginning = "/* "
-			comment_symbol_end = " */"
+		comment_symbol_beginning = "/* "
+		comment_symbol_end = " */"
+
+		if comment_style == "scss":
+			comment_symbol_beginning = "// "
+			comment_symbol_end = ""
 
 		output = ""
 		selectors = []
@@ -227,15 +226,18 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 						if self.brackets_newline_after:
 							if add_comments:
 								output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
+
 							output += empty_line + indent1 + parent_symbol + modifier_separator + modifier + " {\n"
 							output += indent1 + "}\n"
 						else:
 							if add_comments:
 								output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
+
 							output += empty_line + indent1 + parent_symbol + modifier_separator + modifier + " {}\n"
 					else:
 						if add_comments:
 							output += indent1 + comment_symbol_beginning + "." + block["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
+
 						output += indent1 + parent_symbol + modifier_separator + modifier + "\n"
 						output += "\n"
 
@@ -246,14 +248,17 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 						if self.brackets_newline_after:
 							if add_comments:
 								output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + comment_symbol_end + "\n"
+
 							output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + " {\n"
 						else:
 							if add_comments:
 								output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + comment_symbol_end + "\n"
+
 							output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + " {"
 					else:
 						if add_comments:
 							output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + comment_symbol_end + "\n"
+
 						output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + "\n"
 
 					if "modifiers" in element:
@@ -265,15 +270,18 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 								if self.brackets_newline_after:
 									if add_comments:
 										output += empty_line + indent2 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
+
 									output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + " {\n"
 									output += indent2 + "}\n"
 								else:
 									if add_comments:
 										output += empty_line + indent2 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
+
 									output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + " {}\n"
 							else:
 								if add_comments:
 									output += empty_line + indent2 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
+
 								output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + "\n"
 								output += "\n"
 
