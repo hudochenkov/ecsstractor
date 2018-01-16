@@ -11,7 +11,7 @@ except:
 	from html.parser import HTMLParser
 
 class EcsstractorCommand(sublime_plugin.WindowCommand):
-	def run(self, bem_nesting = "default"):
+	def run(self, bem_nesting = "default", add_comments = "default"):
 
 		view = self.window.active_view()
 
@@ -22,6 +22,10 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 
 		if bem_nesting is "default":
 			bem_nesting = plugin_settings.get('bem_nesting')
+
+		if add_comments is "default":
+			add_comments = plugin_settings.get('add_comments')
+
 
 		syntax = 'Packages/CSS/CSS.tmLanguage'
 
@@ -42,7 +46,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 		self.source = view.substr(region)
 
 		if bem_nesting:
-			output = self.generateBEM()
+			output = self.generateBEM(add_comments)
 
 			# set sass syntax if proper package is installed
 			scss_syntax = os.path.join(sublime.packages_path(), 'Syntax Highlighting for Sass', 'Syntaxes', 'SCSS.tmLanguage')
@@ -86,7 +90,7 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 
 		return output
 
-	def generateBEM(self):
+	def generateBEM(self, add_comments = "default"):
 
 		plugin_settings = sublime.load_settings('eCSStractor.sublime-settings')
 		indentation = plugin_settings.get('indentation', '\t')
@@ -94,6 +98,15 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 		modifier_separator = plugin_settings.get('bem.modifier_separator', '--')
 		parent_symbol = plugin_settings.get('preprocessor.parent_symbol', '&')
 		empty_line_before_nested_selector = plugin_settings.get('empty_line_before_nested_selector')
+
+		# Comment style
+		comment_style = "css"
+		comment_style = plugin_settings.get('comment_style', 'css').lower()
+		comment_symbol_beginning = "// "
+		comment_symbol_end = ""
+		if comment_style == "css":
+			comment_symbol_beginning = "/* "
+			comment_symbol_end = " */"
 
 		output = ""
 		selectors = []
@@ -212,11 +225,17 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 				for modifier in block["modifiers"]:
 					if self.brackets:
 						if self.brackets_newline_after:
+							if add_comments:
+								output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
 							output += empty_line + indent1 + parent_symbol + modifier_separator + modifier + " {\n"
 							output += indent1 + "}\n"
 						else:
+							if add_comments:
+								output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
 							output += empty_line + indent1 + parent_symbol + modifier_separator + modifier + " {}\n"
 					else:
+						if add_comments:
+							output += indent1 + comment_symbol_beginning + "." + block["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
 						output += indent1 + parent_symbol + modifier_separator + modifier + "\n"
 						output += "\n"
 
@@ -225,10 +244,16 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 				for element in block["elements"]:
 					if self.brackets:
 						if self.brackets_newline_after:
+							if add_comments:
+								output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + comment_symbol_end + "\n"
 							output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + " {\n"
 						else:
+							if add_comments:
+								output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + comment_symbol_end + "\n"
 							output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + " {"
 					else:
+						if add_comments:
+							output += empty_line + indent1 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + comment_symbol_end + "\n"
 						output += empty_line + indent1 + parent_symbol + element_separator + element["name"] + "\n"
 
 					if "modifiers" in element:
@@ -238,11 +263,17 @@ class EcsstractorCommand(sublime_plugin.WindowCommand):
 						for modifier in element["modifiers"]:
 							if self.brackets:
 								if self.brackets_newline_after:
+									if add_comments:
+										output += empty_line + indent2 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
 									output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + " {\n"
 									output += indent2 + "}\n"
 								else:
+									if add_comments:
+										output += empty_line + indent2 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
 									output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + " {}\n"
 							else:
+								if add_comments:
+									output += empty_line + indent2 + comment_symbol_beginning + "." + block["name"] + element_separator + element["name"] + modifier_separator + modifier + comment_symbol_end + "\n"
 								output += empty_line + indent2 + parent_symbol + modifier_separator + modifier + "\n"
 								output += "\n"
 

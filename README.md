@@ -10,6 +10,9 @@ With BEM nesting:
 
 ![ecss_bem](https://cloud.githubusercontent.com/assets/654597/5896785/60708c5c-a54c-11e4-963f-9e00ede168c3.gif)
 
+With BEM nesting and class names as comments:
+![ecss_bem_comments](https://raw.githubusercontent.com/jaakritso/ecsstractor/master/eCSStractor-comments.mov.gif)
+
 ## Usage
 
 Open any document contain HTML and do one of the following:
@@ -70,6 +73,12 @@ BEM Nesting. Generate nested stylesheet for preprocessors rather simple styleshe
 
 _Default: **false**_
 
+#### add_comments
+
+Generate full class names as a comments before nested BEM elements and modifiers. This is useful for finding the selectors by class names. You can see difference in _Example_ section of this readme.
+
+_Default: **false**_
+
 ### Options only for BEM Nesting is on
 
 #### indentation
@@ -101,6 +110,12 @@ _Default: **&**_
 Add empty line before nested element/modifier.
 
 _Default: **false**_
+
+### comment_style
+
+Comment style shows CSS (/\* \*/) or SCSS(// ) style comments. Works only with add_comments choice.
+
+_Default: **CSS**_
 
 ## Example
 
@@ -138,6 +153,44 @@ Run eCSStractor (BEM Nesting is on):
     &__item {
     }
     &__link {
+        &--special {
+        }
+    }
+}
+```
+
+Run eCSStractor (BEM Nesting and Comments are on):
+
+```css
+.nav {
+    /* .nav--main */
+    &--main {
+    }
+    /* .nav__item */
+    &__item {
+    }
+    /* .nav__link */
+    &__link {
+        /* .nav__link--special */
+        &--special {
+        }
+    }
+}
+```
+
+Run eCSStractor (BEM Nesting and Comments are on and comment style is SCSS):
+
+```scss
+.nav {
+    // .nav--main
+    &--main {
+    }
+    // .nav__item
+    &__item {
+    }
+    // .nav__link
+    &__link {
+        // .nav__link--special
         &--special {
         }
     }

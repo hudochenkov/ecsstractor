@@ -11,6 +11,14 @@
 		}
 	},
 	{
+		"caption": "Run eCSStractor (with BEM Nesting & Comments)",
+		"command": "ecsstractor",
+		"args": {
+			"bem_nesting": true,
+			"add_comments": true
+		}
+	},
+	{
 		"caption": "Run eCSStractor (without BEM Nesting)",
 		"command": "ecsstractor",
 		"args": {

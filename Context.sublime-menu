@@ -15,6 +15,14 @@
 				}
 			},
 			{
+				"caption": "Run (with BEM Nesting & Comments)",
+				"command": "ecsstractor",
+				"args": {
+					"bem_nesting": true,
+					"add_comments": true
+				}
+			},
+			{
 				"caption": "Run (without BEM Nesting)",
 				"command": "ecsstractor",
 				"args": {
